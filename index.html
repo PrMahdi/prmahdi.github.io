@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MaHDi Kadhim | مهدي كاظم</title>
+  <meta name="description" content="مصمم هويّات بصريّة مع سنوات من الخبرة في العمل مع العلامات التجارية المحلية والعالمية." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111011;
+      --white: #f5f3ef;
+      --cream: #ede9e1;
+      --accent: #c8a96e;
+      --accent2: #8b6f3e;
+      --gray: #888;
+      --light-gray: #d9d5cd;
+      --border: #e0dbd0;
+      --font-ar: 'IBM Plex Sans Arabic', sans-serif;
+      --font-en: 'Playfair Display', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-ar);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      direction: rtl;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(245,243,239,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, padding 0.3s;
+    }
+    nav.scrolled { border-color: var(--border); padding: 14px 48px; }
+
+    .nav-logo {
+      font-family: var(--font-en);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--black); font-size: 0.88rem;
+      font-weight: 400; opacity: 0.7; transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-cta {
+      background: var(--black); color: var(--white) !important;
+      padding: 9px 20px; border-radius: 50px; font-size: 0.85rem !important;
+      opacity: 1 !important; transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent2) !important; }
+
+    .nav-available {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.78rem; color: var(--gray); font-weight: 400;
+    }
+    .dot-pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #4caf50; position: relative; display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(76,175,80,0.4); }
+      50%      { box-shadow: 0 0 0 6px rgba(76,175,80,0); }
+    }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--black); transition: 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 140px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border); border-radius: 50px;
+      padding: 6px 16px; font-size: 0.78rem; color: var(--gray);
+      margin-bottom: 36px; width: fit-content;
+      background: rgba(255,255,255,0.6);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 700; line-height: 1.12;
+      letter-spacing: -2px;
+      max-width: 900px;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-family: var(--font-en);
+      color: var(--accent2);
+    }
+
+    .hero-sub {
+      margin-top: 28px; font-size: 1rem; color: #555;
+      max-width: 520px; line-height: 1.7;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-sub strong { color: var(--black); font-weight: 600; }
+
+    .hero-btns {
+      display: flex; align-items: center; gap: 14px; margin-top: 42px; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--black); color: var(--white);
+      padding: 13px 28px; border-radius: 50px; font-size: 0.9rem;
+      text-decoration: none; font-family: var(--font-ar);
+      transition: background 0.2s, transform 0.2s;
+      font-weight: 500;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+    .btn-secondary {
+      border: 1.5px solid var(--border); color: var(--black);
+      padding: 13px 28px; border-radius: 50px; font-size: 0.9rem;
+      text-decoration: none; font-family: var(--font-ar);
+      transition: border-color 0.2s, transform 0.2s;
+      font-weight: 400;
+    }
+    .btn-secondary:hover { border-color: var(--black); transform: translateY(-1px); }
+
+    /* Hero decorative image blob */
+    .hero-blob {
+      position: absolute; left: -80px; bottom: -80px;
+      width: 520px; height: 520px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 60%, #ddd0b8 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+      animation: blobFloat 8s ease-in-out infinite alternate;
+    }
+    @keyframes blobFloat {
+      from { transform: translateY(0) scale(1); }
+      to   { transform: translateY(-30px) scale(1.04); }
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex; gap: 0; border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 0 48px;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .stat {
+      flex: 1; padding: 32px 40px;
+      border-left: 1px solid var(--border);
+      text-align: center;
+    }
+    .stat:last-child { border-left: none; }
+    .stat-num {
+      font-size: 2.4rem; font-weight: 700; letter-spacing: -2px;
+      font-family: var(--font-en);
+      color: var(--black);
+    }
+    .stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 4px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 80px 48px 40px;
+    }
+    .section-title {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gray);
+      border-right: 3px solid var(--accent);
+      padding-right: 12px;
+    }
+    .section-link {
+      font-size: 0.85rem; color: var(--black); text-decoration: none;
+      border-bottom: 1px solid var(--black); padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .section-link:hover { opacity: 0.5; }
+
+    /* ── PROJECTS GRID ── */
+    .projects { padding: 0 48px 80px; }
+    .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; cursor: pointer; position: relative;
+      background: var(--cream);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .project-card.tall { grid-row: span 2; }
+
+    .project-img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      display: block; transition: transform 0.5s;
+      background: linear-gradient(135deg, #c9bfad 0%, #a89880 100%);
+    }
+    .project-card.tall .project-img { aspect-ratio: 3/4; }
+    .project-card:hover .project-img { transform: scale(1.03); }
+
+    /* SVG placeholder art inside project cards */
+    .project-art {
+      width: 100%; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; position: relative;
+    }
+    .project-art.h3 { aspect-ratio: 4/3; }
+    .project-art.h-tall { aspect-ratio: 3/4; }
+
+    .project-info {
+      padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .project-name { font-size: 1rem; font-weight: 600; }
+    .project-cat { font-size: 0.78rem; color: var(--gray); margin-top: 4px; }
+    .project-arrow {
+      width: 36px; height: 36px; border: 1.5px solid var(--border);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; color: var(--black); flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .project-card:hover .project-arrow { background: var(--black); color: var(--white); border-color: var(--black); }
+
+    /* ── PRODUCTS ── */
+    .products { padding: 0 48px 80px; }
+    .products-list { display: flex; flex-direction: column; gap: 0; }
+    .product-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: background 0.15s;
+      text-decoration: none; color: var(--black);
+      position: relative;
+    }
+    .product-item:first-child { border-top: 1px solid var(--border); }
+    .product-item:hover::before {
+      content: ''; position: absolute; inset: 0 -48px;
+      background: var(--cream); z-index: -1;
+    }
+
+    .product-badge {
+      font-size: 0.72rem; font-weight: 600; padding: 3px 10px;
+      border-radius: 50px; margin-left: 10px;
+    }
+    .badge-free { background: #e8f5e9; color: #2e7d32; }
+    .badge-paid { background: #fff3e0; color: #e65100; }
+    .badge-soon { background: #f3e5f5; color: #6a1b9a; }
+
+    .product-name { font-size: 1.05rem; font-weight: 600; }
+    .product-desc { font-size: 0.83rem; color: var(--gray); margin-top: 4px; }
+    .product-price { font-size: 0.9rem; font-weight: 600; color: var(--accent2); }
+
+    /* ── AWARDS ── */
+    .awards-scroll-wrap { overflow: hidden; padding: 0 0 60px; position: relative; }
+    .awards-track {
+      display: flex; gap: 20px;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .awards-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .award-card {
+      width: 300px; flex-shrink: 0;
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; background: var(--cream);
+    }
+    .award-org { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+    .award-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .award-detail { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+    .award-icon { font-size: 2rem; margin-bottom: 16px; }
+
+    /* ── SOCIAL ── */
+    .social-section { padding: 40px 48px 80px; }
+    .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+    .social-card {
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; background: var(--cream);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none; color: var(--black);
+      display: block;
+    }
+    .social-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .social-platform { font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+    .social-stat { font-size: 1.8rem; font-weight: 700; font-family: var(--font-en); }
+    .social-label { font-size: 0.78rem; color: var(--gray); margin-top: 2px; }
+
+    /* ── TIMELINE ── */
+    .timeline { padding: 0 48px 80px; }
+    .timeline-list { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+    .timeline-item {
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+      display: flex; gap: 20px; align-items: flex-start;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .timeline-item.visible { opacity: 1; transform: none; }
+    .timeline-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 5px;
+    }
+    .timeline-text { font-size: 0.9rem; line-height: 1.6; color: #333; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 0 48px 80px; }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 32px; }
+    .testimonial-card {
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; background: var(--cream);
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .testimonial-text { font-size: 0.88rem; line-height: 1.75; color: #444; }
+    .testimonial-author { font-weight: 700; font-size: 0.9rem; }
+    .testimonial-role { font-size: 0.78rem; color: var(--gray); }
+    .stars { color: var(--accent); font-size: 0.85rem; letter-spacing: 2px; }
+
+    /* ── FAQ ── */
+    .faq { padding: 0 48px 80px; }
+    .faq-list { margin-top: 24px; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; padding: 22px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      background: none; border: none; cursor: pointer; text-align: right;
+      font-family: var(--font-ar); font-size: 0.95rem; font-weight: 600;
+      color: var(--black);
+    }
+    .faq-icon { font-size: 1.2rem; transition: transform 0.3s; color: var(--accent); flex-shrink: 0; margin-right: 16px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      font-size: 0.88rem; color: #555; line-height: 1.75;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      margin: 0 48px 80px; padding: 60px;
+      background: var(--black); border-radius: 24px; text-align: center;
+      color: var(--white); position: relative; overflow: hidden;
+    }
+    .newsletter::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(200,169,110,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .newsletter h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+    .newsletter p { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 32px; }
+    .newsletter-form {
+      display: flex; gap: 12px; max-width: 420px; margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1; padding: 13px 18px; border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08);
+      color: var(--white); font-family: var(--font-ar); font-size: 0.9rem;
+      outline: none;
+    }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .newsletter-form input:focus { border-color: var(--accent); }
+    .newsletter-form button {
+      background: var(--accent); color: var(--black); border: none;
+      padding: 13px 24px; border-radius: 50px; cursor: pointer;
+      font-family: var(--font-ar); font-size: 0.9rem; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover { background: #d4b87a; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px; display: flex;
+      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo { font-family: var(--font-en); font-size: 1rem; font-weight: 700; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      color: var(--gray); font-size: 0.85rem; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--black); }
+    .footer-copy { font-size: 0.78rem; color: var(--gray); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      nav.scrolled { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column; gap: 0;
+        position: fixed; inset: 0; background: var(--white);
+        padding: 80px 24px 24px; z-index: 99;
+        align-items: flex-start;
+      }
+      .nav-links.open li { width: 100%; border-bottom: 1px solid var(--border); }
+      .nav-links.open a { display: block; padding: 16px 0; font-size: 1.1rem; opacity: 1; }
+      .hamburger { display: flex; z-index: 101; }
+
+      .hero { padding: 100px 20px 60px; }
+      .hero h1 { font-size: 2.4rem; letter-spacing: -1px; }
+      .stats { margin: 0 20px; flex-wrap: wrap; }
+      .stat { min-width: 50%; border-left: none; border-top: 1px solid var(--border); }
+      .section-header { padding: 60px 20px 30px; }
+      .projects { padding: 0 20px 60px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.tall { grid-row: span 1; }
+      .products { padding: 0 20px 60px; }
+      .social-section { padding: 20px 20px 60px; }
+      .social-grid { grid-template-columns: 1fr 1fr; }
+      .timeline { padding: 0 20px 60px; }
+      .testimonials { padding: 0 20px 60px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .faq { padding: 0 20px 60px; }
+      .newsletter { margin: 0 20px 60px; padding: 40px 24px; }
+      .newsletter-form { flex-direction: column; }
+      footer { padding: 32px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">MaHDi Kadhim</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#projects">أعمالي</a></li>
+    <li><a href="#products">المنتجات</a></li>
+    <li><a href="#contact">تواصل معي</a></li>
+    <li><a href="mailto:work@mahdikadhim.com" class="nav-cta">لديك مشروع؟</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="القائمة">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-badge">
+    <span class="dot-pulse"></span>
+    متاح لمشاريع مُختارة
+  </div>
+  <h1>
+    مُصمّم هُويّات بصريّة<br/>
+    شريكك الاستراتيجي<br/>
+    لهُويّة <em>علامتـك</em> التجاريّة
+  </h1>
+  <p class="hero-sub">
+    أعمل على تحويل العلامة إلى قصة، والقصة إلى هُويّة بصريّة،
+    من خلال منهجية تعتمد على <strong>بناء استراتيجي للعلامة</strong>
+  </p>
+  <div class="hero-btns">
+    <a href="mailto:work@mahdikadhim.com" class="btn-primary">تواصل معي</a>
+    <a href="#projects" class="btn-secondary">تصفح أعمالي</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stat">
+    <div class="stat-num" data-count="15">0</div>
+    <div class="stat-label">دول صممت لها</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-count="12">0</div>
+    <div class="stat-label">مجالات صممت لها</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-count="60">0</div>
+    <div class="stat-label">مشروعات مكتملة</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-count="8">0</div>
+    <div class="stat-label">سنوات الخبرة</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section-header reveal" id="projects">
+  <span class="section-title">أحدث أعمالي</span>
+  <a href="#" class="section-link">تصفح جميع الأعمال ←</a>
+</div>
+<section class="projects reveal">
+  <div class="projects-grid">
+    <!-- Project 1 - tall -->
+    <div class="project-card tall">
+      <div class="project-art h-tall" style="background:linear-gradient(145deg,#2d2d2d 0%,#1a1a1a 100%);">
+        <svg width="100%" height="100%" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="520" fill="#1c1c1c"/>
+          <circle cx="200" cy="200" r="120" fill="none" stroke="#c8a96e" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="80" fill="none" stroke="#c8a96e" stroke-width="0.8" stroke-dasharray="4 8"/>
+          <circle cx="200" cy="200" r="30" fill="#c8a96e"/>
+          <rect x="60" y="360" width="280" height="2" fill="#c8a96e" opacity="0.4"/>
+          <text x="200" y="420" text-anchor="middle" fill="#c8a96e" font-size="18" font-family="serif" letter-spacing="6">BRAND</text>
+          <text x="200" y="445" text-anchor="middle" fill="#888" font-size="10" font-family="sans-serif" letter-spacing="4">IDENTITY</text>
+        </svg>
+      </div>
+      <div class="project-info">
+        <div>
+          <div class="project-name">نور | Nour</div>
+          <div class="project-cat">هوية بصرية · مطعم فاخر</div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <div class="project-art h3" style="background:linear-gradient(135deg,#f0e8d5 0%,#d5c8a8 100%);">
+        <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="300" fill="#ede4cc"/>
+          <rect x="80" y="60" width="240" height="180" rx="12" fill="#3d2b1f"/>
+          <rect x="100" y="80" width="80" height="80" rx="6" fill="#c8a96e"/>
+          <text x="200" y="185" text-anchor="middle" fill="#ede4cc" font-size="14" font-family="sans-serif" letter-spacing="3">MAHDI STUDIO</text>
+          <text x="200" y="210" text-anchor="middle" fill="#c8a96e" font-size="9" font-family="sans-serif" letter-spacing="5">CREATIVE AGENCY</text>
+        </svg>
+      </div>
+      <div class="project-info">
+        <div>
+          <div class="project-name">ريف | Reef</div>
+          <div class="project-cat">هوية بصرية · سياحة</div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <div class="project-art h3" style="background:linear-gradient(135deg,#e8f4f8 0%,#b8d8e8 100%);">
+        <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="300" fill="#d9eef5"/>
+          <polygon points="200,40 340,240 60,240" fill="none" stroke="#2a6b8a" stroke-width="2.5"/>
+          <polygon points="200,80 300,220 100,220" fill="#2a6b8a" opacity="0.15"/>
+          <circle cx="200" cy="160" r="20" fill="#2a6b8a"/>
+          <text x="200" y="270" text-anchor="middle" fill="#2a6b8a" font-size="11" font-family="sans-serif" letter-spacing="4">WELLNESS · HEALTH</text>
+        </svg>
+      </div>
+      <div class="project-info">
+        <div>
+          <div class="project-name">سِكَن | Sakan</div>
+          <div class="project-cat">هوية بصرية · صحة ورعاية</div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card">
+      <div class="project-art h3" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);">
+        <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="300" fill="#12122a"/>
+          <rect x="60" y="80" width="60" height="140" fill="#f0c040"/>
+          <rect x="140" y="120" width="60" height="100" fill="#f0c040" opacity="0.7"/>
+          <rect x="220" y="60" width="60" height="160" fill="#f0c040" opacity="0.9"/>
+          <rect x="300" y="100" width="60" height="120" fill="#f0c040" opacity="0.6"/>
+          <text x="200" y="260" text-anchor="middle" fill="#f0c040" font-size="11" font-family="sans-serif" letter-spacing="5">GOLD MEDIA</text>
+        </svg>
+      </div>
+      <div class="project-info">
+        <div>
+          <div class="project-name">ذهب | Dhahab</div>
+          <div class="project-cat">هوية بصرية · إعلام رقمي</div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<div class="section-header reveal" id="products">
+  <span class="section-title">الدورات والمنتجات</span>
+  <a href="#" class="section-link">تصفح جميع المنتجات ←</a>
+</div>
+<section class="products reveal">
+  <div class="products-list">
+    <a href="#" class="product-item">
+      <div>
+        <span class="product-badge badge-free">كتيّب مجاني</span>
+        <div class="product-name">دليل إعداد الملفات للطباعة</div>
+        <div class="product-desc">تحميل الكتيّب الإلكتروني المجاني</div>
+      </div>
+      <span class="product-price">مجاني ↗</span>
+    </a>
+    <a href="#" class="product-item">
+      <div>
+        <span class="product-badge badge-paid">دورة مسجّلة</span>
+        <div class="product-name">تصميم وبناء الهُويّات البصريّة</div>
+        <div class="product-desc">دورة رقمية شاملة من الصفر حتى الاحتراف</div>
+      </div>
+      <span class="product-price">$ 80 ↗</span>
+    </a>
+    <a href="#" class="product-item">
+      <div>
+        <span class="product-badge badge-soon">قريباً</span>
+        <div class="product-name">كيف تُترجم الإستراتيجيات إلى هُويّات</div>
+        <div class="product-desc">معسكر تدريبي مكثّف — انضم لقائمة الانتظار</div>
+      </div>
+      <span class="product-price">قائمة الانتظار ↗</span>
+    </a>
+    <a href="#" class="product-item">
+      <div>
+        <span class="product-badge badge-free">ويبينار مسجّل</span>
+        <div class="product-name">توثيق المشاريع وبناء ملف العرض</div>
+        <div class="product-desc">رابط المحاضرة المسجّلة متاح الآن</div>
+      </div>
+      <span class="product-price">مجاني ↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<div class="section-header reveal">
+  <span class="section-title">جوائز وإنجازات</span>
+</div>
+<div class="awards-scroll-wrap reveal">
+  <div class="awards-track">
+    <!-- first set -->
+    <div class="award-card"><div class="award-icon">🥇</div><div class="award-org">GDA Awards</div><div class="award-title">Golden Winner</div><div class="award-detail">المركز الأول «الذهبية» فئة تصميم الهويات البصرية 2024</div></div>
+    <div class="award-card"><div class="award-icon">🥈</div><div class="award-org">Gridliners Awards</div><div class="award-title">Silver Winner</div><div class="award-detail">المركز الثاني «الفضية» فئة تصميم الهويات البصرية</div></div>
+    <div class="award-card"><div class="award-icon">❤️</div><div class="award-org">Gridliners Awards</div><div class="award-title">Audience Choice Award</div><div class="award-detail">جائزة الجمهور عن مشروع «نور» للهوية البصرية</div></div>
+    <div class="award-card"><div class="award-icon">⭐</div><div class="award-org">Behance</div><div class="award-title">Featured Project</div><div class="award-detail">مشروع مُميَّز على منصة بيهانس في قسم الهويات البصرية</div></div>
+    <div class="award-card"><div class="award-icon">🏆</div><div class="award-org">Arab Design Awards</div><div class="award-title">Best Branding</div><div class="award-detail">أفضل مشروع براندنج عربي لعام 2025</div></div>
+    <!-- duplicate for loop -->
+    <div class="award-card"><div class="award-icon">🥇</div><div class="award-org">GDA Awards</div><div class="award-title">Golden Winner</div><div class="award-detail">المركز الأول «الذهبية» فئة تصميم الهويات البصرية 2024</div></div>
+    <div class="award-card"><div class="award-icon">🥈</div><div class="award-org">Gridliners Awards</div><div class="award-title">Silver Winner</div><div class="award-detail">المركز الثاني «الفضية» فئة تصميم الهويات البصرية</div></div>
+    <div class="award-card"><div class="award-icon">❤️</div><div class="award-org">Gridliners Awards</div><div class="award-title">Audience Choice Award</div><div class="award-detail">جائزة الجمهور عن مشروع «نور» للهوية البصرية</div></div>
+    <div class="award-card"><div class="award-icon">⭐</div><div class="award-org">Behance</div><div class="award-title">Featured Project</div><div class="award-detail">مشروع مُميَّز على منصة بيهانس في قسم الهويات البصرية</div></div>
+    <div class="award-card"><div class="award-icon">🏆</div><div class="award-org">Arab Design Awards</div><div class="award-title">Best Branding</div><div class="award-detail">أفضل مشروع براندنج عربي لعام 2025</div></div>
+  </div>
+</div>
+
+<!-- SOCIAL -->
+<div class="section-header reveal">
+  <span class="section-title">تأثيري الرقمي</span>
+</div>
+<section class="social-section reveal">
+  <div class="social-grid">
+    <a href="#" class="social-card">
+      <div class="social-platform">Instagram</div>
+      <div class="social-stat">42K</div>
+      <div class="social-label">متابع</div>
+    </a>
+    <a href="#" class="social-card">
+      <div class="social-platform">LinkedIn</div>
+      <div class="social-stat">9K</div>
+      <div class="social-label">مستفيد</div>
+    </a>
+    <a href="#" class="social-card">
+      <div class="social-platform">Telegram</div>
+      <div class="social-stat">30K</div>
+      <div class="social-label">صديق</div>
+    </a>
+    <a href="#" class="social-card">
+      <div class="social-platform">Pinterest</div>
+      <div class="social-stat">500K</div>
+      <div class="social-label">مشاهدة</div>
+    </a>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<div class="section-header reveal">
+  <span class="section-title">أبرز محطات مسيرتي</span>
+</div>
+<section class="timeline reveal">
+  <div class="timeline-list">
+    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-text">متخرج من قسم الفنون والتصميم الجرافيكي بجامعة بغداد</div></div>
+    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-text">أعدت تصميم هوية مؤسسة ثقافية كبرى في العراق ضمن مبادرة وزارة الثقافة</div></div>
+    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-text">عملت مع فرق إبداعية على هُويّة بصرية لعدة دوريات رياضية عربية</div></div>
+    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-text">أسهمت في تصميم هوية محافظة سياحية بدولة الخليج ضمن مشروع دولي</div></div>
+    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-text">عملت مباشرة مع جمعيات ثقافية وفنية وشركات ناشئة على علاماتها التجارية</div></div>
+    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-text">قمت بتدريس دورة «تصميم وبناء الهويات البصرية» لأكثر من 400 طالب حتى الآن</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div class="section-header reveal">
+  <span class="section-title">كلمات من عملائي</span>
+  <a href="#" class="section-link">تصفح جميع التقييمات ←</a>
+</div>
+<section class="testimonials reveal">
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">كان لي شرف العمل مع مهدي في عدة مشاريع، ويمكنني القول بثقة إنه مصمّم هويات بصريّة مميّز. يتميّز بسرعة الاستجابة وفهم عميق لاحتياجات العميل.</div>
+      <div><div class="testimonial-author">أحمد الربيعي</div><div class="testimonial-role">خبير تسويق استراتيجي</div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">سعدتُ بالعمل مع مهدي في مشاريع براندنج محلية ودولية. مصمّم موهوب يتميز بالإبداع والالتزام والقدرة على تقديم نتائج قوية حتى تحت أصعب المواعيد.</div>
+      <div><div class="testimonial-author">سارة العامري</div><div class="testimonial-role">مديرة شركة إعلامية</div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">تجربة مهدي معنا كانت فريدة وإيجابية بشكل كبير. مميز بمهاراته الإبداعية الاستثنائية والرؤية الفنية العميقة التي أسهمت في تحسين جودة أعمال الشركة.</div>
+      <div><div class="testimonial-author">طلال الجابري</div><div class="testimonial-role">مدير مشاريع ومؤسس Vitality</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="section-header reveal">
+  <span class="section-title">أسئلة قد تراودك</span>
+</div>
+<section class="faq reveal">
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">هل تقدم خدمة تصميم الشعار بشكل منفصل؟<span class="faq-icon">+</span></button>
+      <div class="faq-a">لا أقدم تصميم الشعار كخدمة منفردة، لأن الشعار جزء من منظومة متكاملة. أعمل على بناء الهوية البصرية الكاملة التي تشمل الشعار والألوان والخطوط وجميع العناصر البصرية.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">كم من الوقت تستغرق المشاريع عادةً؟<span class="faq-icon">+</span></button>
+      <div class="faq-a">تتراوح مدة المشاريع بين 3 إلى 8 أسابيع حسب حجم المشروع ومتطلباته، مع الحرص على الجودة والتواصل المستمر مع العميل في كل مرحلة.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">لماذا تعتبر الهويّة البصريّة القوية أمرًا هامًا؟<span class="faq-icon">+</span></button>
+      <div class="faq-a">الهوية البصرية هي الوجه الأول الذي يراه العميل، وهي ما يميزك عن المنافسين. الهوية القوية تبني الثقة وتجعل علامتك لا تُنسى في ذهن الجمهور المستهدف.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">هل يمكنك تحديث هوية موجودة؟<span class="faq-icon">+</span></button>
+      <div class="faq-a">نعم، أعمل على تطوير وتحديث الهويات البصرية الموجودة بما يحافظ على جوهر العلامة ويضيف إليها قيمة بصرية واستراتيجية جديدة.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">كم تكلفة تصميم الهويّة البصريّة؟<span class="faq-icon">+</span></button>
+      <div class="faq-a">تختلف التكلفة حسب حجم المشروع وعمقه. للحصول على عرض سعر مناسب، يمكنك التواصل معي مباشرة لمناقشة احتياجاتك وتحديد الميزانية المناسبة.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter reveal" id="contact">
+  <h2>سجّل بريدك</h2>
+  <p>قيمة جديدة كل أسبوع في عالم التصميم وبناء العلامات</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="بريدك الإلكتروني" />
+    <button onclick="alert('شكراً! تم الاشتراك بنجاح ✓')">اشترك</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MaHDi Kadhim</div>
+  <div class="footer-links">
+    <a href="mailto:work@mahdikadhim.com">البريد</a>
+    <a href="#">إنستجرام</a>
+    <a href="#">لينكدإن</a>
+    <a href="#">تيليجرام</a>
+    <a href="#">بيهانس</a>
+  </div>
+  <div class="footer-copy">جميع الحقوق محفوظة لـ مهدي كاظم © 2026</div>
+</footer>
+
+<script>
+  // NAV scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Intersection Observer — reveal
+  const revealEls = document.querySelectorAll('.reveal, .timeline-item');
+  const observer  = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Counter animation
+  const counters = document.querySelectorAll('[data-count]');
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = +el.getAttribute('data-count');
+      const suffix = target >= 50 ? '+' : '+';
+      let current = 0;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current + suffix;
+        if (current >= target) clearInterval(timer);
+      }, 40);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterObs.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
